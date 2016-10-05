@@ -17,6 +17,12 @@ def parse_json(text):
     """Return text parsed as a JSON object."""
     return json.loads(text)
 
+# separation does not prevent you from having convenience functions
+
+def parse_json_read_file(path):
+    """Because I want the combined function behaviour badly."""
+    return parse_json(read_file(path))
+
 sample_json = """
     {"menu": {
       "id": "file",
@@ -35,12 +41,13 @@ def test_parse_json():
     frame = parse_json(sample_json)
     assert frame['menu']['popup']['menuitem'][0]['value'] == 'New'
 
+
 def test_read_file():
     # read_file(path) is just too boring to unit test
     pass
 
 #
-# here is some of the extra stuff needed without separation
+# here is some of the extra junk needed without separation
 #
 
 import os
